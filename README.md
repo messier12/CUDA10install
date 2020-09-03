@@ -3,29 +3,29 @@ I’ll start my story with saying that I had issues like three years ago with CU
 
 1. Start terminal and remove any NVIDIA traces you may have on your machine.
 ```bash
-sudo rm /etc/apt/sources.list.d/cuda*
-sudo apt remove --autoremove nvidia-cuda-toolkit
-sudo apt remove --autoremove nvidia-*
+$ sudo rm /etc/apt/sources.list.d/cuda*
+$ sudo apt remove --autoremove nvidia-cuda-toolkit
+$ sudo apt remove --autoremove nvidia-*
 ```
 2. Setup the correct CUDA PPA
 ```bash
-sudo apt update
-sudo add-apt-repository ppa:graphics-drivers
-sudo apt-key adv --fetch-keys  http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
-sudo bash -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list'
-sudo bash -c 'echo "deb http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda_learn.list'
+$ sudo apt update
+$ sudo add-apt-repository ppa:graphics-drivers
+$ sudo apt-key adv --fetch-keys  http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+$ sudo bash -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list'
+$ sudo bash -c 'echo "deb http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda_learn.list'
 ```
 
 3. Install CUDA 10.0 packages
 
 ```bash
-sudo apt update
-sudo apt install cuda-10-0
-sudo apt install libcudnn7
+$ sudo apt update
+$ sudo apt install cuda-10-0
+$ sudo apt install libcudnn7
 ```
 4. As the last step one need to specify PATH to CUDA in ‘.profile’ file. Open the file by running:
 ```bash
-sudo vim ~/.profile
+$ sudo vim ~/.profile
 ```
 add the following lines at the end of the file:
 ```bash
@@ -39,7 +39,7 @@ fi
 
 check CUDA version
 ```bash
-nvcc --version
+$ nvcc --version
 ```
 the output should look like this
 ```
@@ -50,7 +50,7 @@ Cuda compilation tools, release 10.1, V10.1.168
 ```
 check NVIDIA driver
 ```bash
-nvidia-smi
+$ nvidia-smi
 ```
 here is it's example output
 ```
@@ -77,5 +77,5 @@ Thu Aug 27 13:04:07 2020
 ```
 check libcudnn
 ```
-/sbin/ldconfig -N -v $(sed ‘s/:/ /’ <<< $LD_LIBRARY_PATH) 2>/dev/null | grep libcudnn
+$ /sbin/ldconfig -N -v $(sed ‘s/:/ /’ <<< $LD_LIBRARY_PATH) 2>/dev/null | grep libcudnn
 ```
