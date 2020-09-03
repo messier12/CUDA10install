@@ -5,7 +5,7 @@ I’ll start my story with saying that I had issues like three years ago with CU
 ```bash
 sudo rm /etc/apt/sources.list.d/cuda*
 sudo apt remove --autoremove nvidia-cuda-toolkit
-sudo apt remove --autoremove-nvidia-*
+sudo apt remove --autoremove nvidia-*
 ```
 2. Setup the correct CUDA PPA
 ```bash
@@ -22,6 +22,7 @@ sudo bash -c 'echo "deb http://developer.download.nvidia.com/compute/machine-lea
 sudo apt update
 sudo apt install cuda-10-0
 sudo apt install libcudnn7
+```
 4. As the last step one need to specify PATH to CUDA in ‘.profile’ file. Open the file by running:
 ```bash
 sudo vim ~/.profile
@@ -38,7 +39,7 @@ fi
 
 check CUDA version
 ```bash
-nvcc --versionnvcc
+nvcc --version
 ```
 the output should look like this
 ```
